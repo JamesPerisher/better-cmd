@@ -45,6 +45,8 @@ class executer:
         pass
 
 def base_interpereter(comm):
+    if comm.strip() == "":
+        return
     if comm.strip().lower() == "help":
         print("%shelp"%colour("magenta", bright=False))
         return

@@ -42,7 +42,7 @@ class Shell(InteractiveConsole):
         return
 
 class Python(executer):
-    def __init__(self):
+    def __init__(self, caller, perms):
         super().__init__("Python", "Runs and returns the results of Python commands", colour("green"))
         self.shell = Shell()
 

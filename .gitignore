@@ -1,0 +1,10 @@
+# build
+.git/*
+dist*
+build*
+*__pycache__*
+CMD 2.0.lnk
+Code_helpers*
+
+test.py
+NewCMD.py
