@@ -1,7 +1,11 @@
 import os
+from base import colour,base_interpereter
+
+# modules
 import cmd
 import python
-from base import colour,base_interpereter
+import WiFi_passworder
+import MAC_spoofer
 
 
 class caller:
@@ -24,7 +28,7 @@ class caller:
         try:
             self.exec.get(comm)
         except:
-            print("error")
+            print("%scall error in for command: %s\n"%(colour("red", bright=False), comm))
 
     def mainloop(self):
         while True:
@@ -56,4 +60,6 @@ if __name__ == '__main__':
     a = caller("user", colour("blue"))
     a.add_exec(cmd.CMD)
     a.add_exec(python.Python)
+    a.add_exec(WiFi_passworder.WiFi_cache)
+    a.add_exec(MAC_spoofer.MAC_Spoof)
     a.mainloop()

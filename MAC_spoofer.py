@@ -5,8 +5,8 @@ from base import executer, colour
 
 
 class MAC_Spoof(executer):
-    def __init__(self):
-        super().__init__("WIFI", "Gets cached wifi passwords", colour("cyan"))
+    def __init__(self, caller, perms):
+        super().__init__("MAC", "Spoof and view divice mac adresses", colour("cyan"))
 
     def _get_list_format(self, v):
         v = [["name", "device", "current mac"]] + v
@@ -33,11 +33,12 @@ class MAC_Spoof(executer):
             out.append(current)
         return out
 
+
     def get(self, comm):
         if comm.strip() == "list":
             print(self._get_list_format(self.get_list()))
 
 
 if __name__ == '__main__':
-    a = MAC_Spoof()
+    a = MAC_Spoof(0, 0)
     a.get("list")

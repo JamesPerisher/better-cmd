@@ -36,7 +36,7 @@ class executer:
         return "Default response to: %s\n"%command
 
     def get_linestat(self):
-        return "Enter command:~$ "
+        return "~$ "
     def getSelf(self):
         return self
     def eventOn(self):
@@ -48,7 +48,12 @@ def base_interpereter(comm):
     if comm.strip() == "":
         return
     if comm.strip().lower() == "help":
-        print("%shelp"%colour("magenta", bright=False))
+        help = "\n".join([colour("magenta", bright=False)+
+        "help      shows this message use \"help [commad]\" for more information",
+        "exec      change executer use \"exec list\" to view all",
+        "NOTE: help is not build into all executers try \"help\" or \"/?\"",
+        "\n"])
+        print(help)
         return
     if comm.strip().lower() == "exit":
         print("%sexiting%s\n"%(colour("green", bright=False), colour("white", bright=False)))
