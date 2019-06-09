@@ -11,10 +11,9 @@ class CMD(executer):
             os.chdir("C:\\Users\\%s" %os.getlogin())
         else:
             os.chdir("C:\\WINDOWS\\system32")
-        self.dir = os.getcwd()
 
     def get_linestat(self):
-        return "%s> " %self.dir
+        return "%s> " %os.getcwd()
 
     def decoder(self, bytein):
         out = str(bytein).replace("\\r", "").replace("\\n", "\n").replace("\\\'", "\'").replace("\\\\", "\\")   #fixes basic \n \r
@@ -25,19 +24,6 @@ class CMD(executer):
     def get(self, command):
         if command == "":
             return
-        if command[0:3].lower() == "cd ":
-            if command[3:7] == "home":
-                os.chdir("C:\\Users\\%s" %os.getlogin())
-                self.dir = os.getcwd()
-                command = "cd %s" %command[8::]
-            try:
-                os.chdir(command[3::].replace("\"", ""))
-                self.dir = os.getcwd()
-                return ""
-            except FileNotFoundError:
-                print(colour("yellow") + "The system cannot find the path specified.\n")
-                return
-
         p = subprocess.Popen(["call"]+command.split(" "), stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, shell=True)
 

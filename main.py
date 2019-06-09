@@ -6,6 +6,7 @@ import cmd
 import python
 import WiFi_passworder
 import MAC_spoofer
+import bash
 
 
 class caller:
@@ -62,4 +63,5 @@ if __name__ == '__main__':
     a.add_exec(python.Python)
     a.add_exec(WiFi_passworder.WiFi_cache)
     a.add_exec(MAC_spoofer.MAC_Spoof)
+    a.add_exec(bash.Bash)
     a.mainloop()

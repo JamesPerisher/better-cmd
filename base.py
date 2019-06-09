@@ -1,3 +1,5 @@
+import os
+
 def color_table():
     print("\033[0;37;40m Normal text\n")
     print("\033[2;37;40m Underlined text\033[0;37;40m \n")
@@ -45,8 +47,19 @@ class executer:
         pass
 
 def base_interpereter(comm):
-    if comm.strip() == "":
+    comm = comm.strip().lower()
+    if comm == "":
         return
+    if comm[0:2] == "cd":
+        if comm[3:7] == "home":
+            os.chdir("C:\\Users\\%s" %os.getlogin())
+            comm = "cd %s" %comm[8::]
+        try:
+            os.chdir(comm[3::].replace("\"", ""))
+            return
+        except FileNotFoundError:
+            print(colour("red", bright=False) + "The system cannot find the path specified.\n")
+            return
     if comm.strip().lower() == "help":
         help = "\n".join([colour("magenta", bright=False)+
         "help      shows this message use \"help [commad]\" for more information",
